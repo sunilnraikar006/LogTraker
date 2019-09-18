@@ -6,13 +6,12 @@ import android.util.Log;
 import androidx.lifecycle.ProcessLifecycleOwner;
 
 import com.sgs.mylibrary.crashmanager.CrashHandler;
-import com.sgs.mylibrary.logtracker.LogManager;
 import com.sgs.mylibrary.orm.SugarContext;
 import com.sgs.mylibrary.util.LibConstants;
 import com.sgs.mylibrary.util.SharedPref;
 
-public final class LogTracker {
-    public static final String TAG = LogTracker.class.getSimpleName();
+public  class LogMTracker {
+    public static final String TAG = LogMTracker.class.getSimpleName();
     public static Application application;
 
     public static final int MASK_CODE = -19;
@@ -20,10 +19,10 @@ public final class LogTracker {
     public static SessionHelper sessionHelper;
 
     public boolean isIntialsed = false;
-    public static LogTracker logInstance;
+    public static LogMTracker logInstance;
 
 
-    private LogTracker(Application app) {
+    public LogMTracker(Application app) {
         try {
             application = app;
 
@@ -48,9 +47,9 @@ public final class LogTracker {
 
     }
 
-    public static LogTracker getInstance(Application application) {
+    public static LogMTracker getInstance(Application application) {
         if (logInstance == null)
-            logInstance = new LogTracker(application);
+            logInstance = new LogMTracker(application);
         return logInstance;
     }
 
