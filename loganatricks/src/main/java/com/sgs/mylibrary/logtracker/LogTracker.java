@@ -1,4 +1,4 @@
-package com.sgs.mylibrary.logmanager;
+package com.sgs.mylibrary.logtracker;
 
 
 import android.app.Application;
@@ -18,18 +18,18 @@ import java.util.ArrayList;
 
 
 /**
- * LogManager will be avaible to the Developer
+ * LogTracker will be avaible to the Developer
  */
-public class LogManager {
+public class LogTracker {
 
-    private static final String TAG = LogManager.class.getSimpleName();
+    private static final String TAG = LogTracker.class.getSimpleName();
     public static Application application;
 
     public static final int MASK_CODE = -19;
     public static final int UNMASK_CODE = -1;
     private static SessionHelper sessionHelper;
 
-    private static LogManager mInstance;
+    private static LogTracker mInstance;
     private boolean isIntialsed = false;
 
     /**

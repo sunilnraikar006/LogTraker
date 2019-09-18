@@ -18,7 +18,7 @@ import android.view.Window;
 import android.view.WindowManager.LayoutParams;
 
 
-import com.sgs.mylibrary.logmanager.LogManager;
+import com.sgs.mylibrary.logtracker.LogTracker;
 
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Field;
@@ -109,7 +109,7 @@ public final class ScreenShotHelper {
         // We need to do it in main thread
 
         try {
-            if ((int) window.getDecorView().getTag() == LogManager.MASK_CODE) {
+            if ((int) window.getDecorView().getTag() == LogTracker.MASK_CODE) {
                 //  Paint hidePaint = new Paint();
                 // hidePaint.setColor(Color.rgb(0, 0, 0));
                 Canvas dimCanvas = new Canvas(bitmap);
@@ -204,7 +204,7 @@ public final class ScreenShotHelper {
 
         try {
             int tag = (int) view.getTag();
-            if (tag == LogManager.MASK_CODE) {
+            if (tag == LogTracker.MASK_CODE) {
                  hideViews.add(view);
             }
         } catch (Exception e) {
