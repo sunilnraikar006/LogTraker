@@ -11,7 +11,7 @@ import com.sgs.mylibrary.orm.SugarContext;
 import com.sgs.mylibrary.util.LibConstants;
 import com.sgs.mylibrary.util.SharedPref;
 
-public class LogTracker {
+public final class LogTracker {
     private static final String TAG = LogTracker.class.getSimpleName();
     public static Application application;
 
