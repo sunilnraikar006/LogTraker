@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">LogLibrary</string>
+    <string name="shipped_ffmpeg_version">xcg</string>
+</resources>

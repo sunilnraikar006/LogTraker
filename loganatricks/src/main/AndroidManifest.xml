@@ -1,0 +1,28 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.sgs.mylibrary">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+
+    <application>
+
+        <service
+            android:name=".screenshot.ScreenRecorder"
+            android:stopWithTask="false" />
+        <service
+            android:name=".util.GarbageCleaner"
+            android:stopWithTask="false" />
+        <service
+            android:name=".video.ZipCreator"
+            android:stopWithTask="false" />
+        <service android:name=".util.ConfigurationHelper" />
+         <service android:name=".service.UploadDataService"/>
+        <service android:name=".service.UploadZipService" />
+        <service android:name=".service.DeleteImgSessionService" />
+
+    </application>
+
+</manifest>

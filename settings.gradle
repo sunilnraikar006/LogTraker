@@ -1,0 +1,2 @@
+include ':app', ':loganatricks'
+rootProject.name='LogTracker'
