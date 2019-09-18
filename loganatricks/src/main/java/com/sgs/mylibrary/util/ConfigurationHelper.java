@@ -9,7 +9,6 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 
-import com.sgs.mylibrary.LogManager;
 import com.sgs.mylibrary.Presenter.AddDeviceP;
 import com.sgs.mylibrary.SessionHelper;
 import com.sgs.mylibrary.log_interface.ApiInterface;

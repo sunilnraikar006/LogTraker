@@ -1,4 +1,4 @@
-package com.sgs.mylibrary;
+package com.sgs.mylibrary.logmanager;
 
 
 import android.app.Application;
@@ -8,6 +8,7 @@ import android.view.View;
 
 import androidx.lifecycle.ProcessLifecycleOwner;
 
+import com.sgs.mylibrary.SessionHelper;
 import com.sgs.mylibrary.crashmanager.CrashHandler;
 import com.sgs.mylibrary.orm.SugarContext;
 import com.sgs.mylibrary.util.LibConstants;
@@ -36,7 +37,7 @@ public class LogManager {
      * @param app
      * @param token
      */
-    public  static final void initialize(final Application app, String token) {
+    public  static  void initialize(final Application app, String token) {
         try {
             application = app;
 

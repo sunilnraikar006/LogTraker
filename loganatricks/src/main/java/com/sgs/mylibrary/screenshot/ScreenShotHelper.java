@@ -18,7 +18,7 @@ import android.view.Window;
 import android.view.WindowManager.LayoutParams;
 
 
-import com.sgs.mylibrary.LogManager;
+import com.sgs.mylibrary.logmanager.LogManager;
 
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Field;

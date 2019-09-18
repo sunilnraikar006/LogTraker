@@ -1,7 +1,7 @@
 package com.sgs.mylibrary.Presenter;
 
 import android.util.Log;
-import com.sgs.mylibrary.LogManager;
+
 import com.sgs.mylibrary.log_interface.AddDeviceI;
 import com.sgs.mylibrary.log_interface.ApiInterface;
 import com.sgs.mylibrary.model.AddDeviceM;
