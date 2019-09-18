@@ -32,12 +32,17 @@ public class LogTracker {
     private static LogTracker mInstance;
     private boolean isIntialsed = false;
 
+    public LogTracker() {
+
+    }
+
     /**
      * INTIALISE ALL THE MODULES present in SDK
+     *
      * @param app
      * @param token
      */
-    public  static  void initialize(final Application app, String token) {
+    public static void initialize(final Application app, String token) {
         try {
             application = app;
 
@@ -48,7 +53,7 @@ public class LogTracker {
             sessionHelper = SessionHelper.getInstance(application);
 //            sessionHelper.startSession();
             sessionHelper.getConfig();
-              /*lifecycle intialisation*/
+            /*lifecycle intialisation*/
             ProcessLifecycleOwner.get().getLifecycle().addObserver(sessionHelper);
             application.registerActivityLifecycleCallbacks(sessionHelper);
             application.registerComponentCallbacks(sessionHelper);
@@ -69,6 +74,7 @@ public class LogTracker {
 
     /**
      * method will mark a particular view as sensitiveInformation
+     *
      * @param view
      */
     public static void markViewAsSensitiveInformation(View view) {
@@ -77,13 +83,16 @@ public class LogTracker {
 
     /**
      * method will mark a particular view as nonSenstiveInformation
+     *
      * @param view
      */
     public static void unMarkViewAsSensitiveInformation(View view) {
         view.setTag(UNMASK_CODE);
     }
 
-    /** method will mark a list of views as senstive information
+    /**
+     * method will mark a list of views as senstive information
+     *
      * @param views
      */
     public static void markViewsAsSensitiveInformation(ArrayList<View> views) {
@@ -94,6 +103,7 @@ public class LogTracker {
 
     /**
      * will mark a list of views as nonSensitiveInformation
+     *
      * @param views
      */
     public static void unMarkViewsAsSensitiveInformation(ArrayList<View> views) {
@@ -107,21 +117,23 @@ public class LogTracker {
     /**
      * method will track all the exception
      * developer need to add this method in catch block
+     *
      * @param e
      * @param methodName
      * @param className
      */
     public static void trackException(Exception e, String methodName, String className) {
-       sessionHelper.addExceptionLog(e, methodName, className);
+        sessionHelper.addExceptionLog(e, methodName, className);
     }
 
     /**
      * method will track all the error
      * developer need to add this method in catch block
+     *
      * @param error
      */
-    public  void trackError(Error error) {
-        if(!isIntialsed)
+    public void trackError(Error error) {
+        if (!isIntialsed)
             return;
         sessionHelper.addErrorLog(error);
     }
@@ -132,8 +144,8 @@ public class LogTracker {
      *
      * @param warn
      */
-    public  void trackWarnError(String warn) {
-        if(!isIntialsed)
+    public void trackWarnError(String warn) {
+        if (!isIntialsed)
             return;
         sessionHelper.addWarningLog(warn);
     }
@@ -141,10 +153,11 @@ public class LogTracker {
     /**
      * method will track info error
      * developer need to add this method in catch block
+     *
      * @param info
      */
-    public  void trackInfoError(String info) {
-        if(!isIntialsed)
+    public void trackInfoError(String info) {
+        if (!isIntialsed)
             return;
         sessionHelper.addInfoLog(info);
     }
