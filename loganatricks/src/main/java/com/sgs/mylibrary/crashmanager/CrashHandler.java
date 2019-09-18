@@ -1,6 +1,7 @@
 package com.sgs.mylibrary.crashmanager;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.sgs.mylibrary.SessionHelper;
 
@@ -11,7 +12,7 @@ import com.sgs.mylibrary.SessionHelper;
 public final class CrashHandler implements Thread.UncaughtExceptionHandler {
 
     private static final String TAG = CrashHandler.class.getSimpleName();
-    private final Application application;
+    private final Context application;
     private final Thread.UncaughtExceptionHandler rootHandler;
 
     public CrashHandler(Application application) {

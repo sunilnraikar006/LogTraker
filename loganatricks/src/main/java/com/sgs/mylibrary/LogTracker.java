@@ -1,12 +1,12 @@
-package com.sgs.mylibrary.logtracker;
+package com.sgs.mylibrary;
 
 import android.app.Application;
 import android.util.Log;
 
 import androidx.lifecycle.ProcessLifecycleOwner;
 
-import com.sgs.mylibrary.SessionHelper;
 import com.sgs.mylibrary.crashmanager.CrashHandler;
+import com.sgs.mylibrary.logtracker.LogManager;
 import com.sgs.mylibrary.orm.SugarContext;
 import com.sgs.mylibrary.util.LibConstants;
 import com.sgs.mylibrary.util.SharedPref;
