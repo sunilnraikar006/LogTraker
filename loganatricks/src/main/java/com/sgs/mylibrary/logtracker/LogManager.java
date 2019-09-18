@@ -1,7 +1,10 @@
 package com.sgs.mylibrary.logtracker;
 
+
 import android.app.Application;
+
 import android.util.Log;
+import android.view.View;
 
 import androidx.lifecycle.ProcessLifecycleOwner;
 
@@ -11,8 +14,15 @@ import com.sgs.mylibrary.orm.SugarContext;
 import com.sgs.mylibrary.util.LibConstants;
 import com.sgs.mylibrary.util.SharedPref;
 
-public class LogTracker {
-    private static final String TAG = LogTracker.class.getSimpleName();
+import java.util.ArrayList;
+
+
+/**
+ * LogManager will be avaible to the Developer
+ */
+public class LogManager {
+
+    private static final String TAG = LogManager.class.getSimpleName();
     public static Application application;
 
     public static final int MASK_CODE = -19;
@@ -21,18 +31,28 @@ public class LogTracker {
 
     private static LogManager mInstance;
     private boolean isIntialsed = false;
-    private static LogTracker logInstance;
+
+    public LogManager(Application app, String token) {
+
+    }
 
 
-    private LogTracker(Application app) {
+    /**
+     * INTIALISE ALL THE MODULES present in SDK
+     *
+     * @param app
+     * @param token
+     */
+    public static void initialize(final Application app, String token) {
         try {
             application = app;
 
             SugarContext.init(app);/*orm intialisation*/
             new CrashHandler(application);       /*crash handler intialisation*/
-
+         /*   FFmpeg fFmpeg = FFMPEGHelper.getInstance(app).getFfmpeg();
+            fFmpeg.loadBinary(new FFMPEGBinaryLoaderCallback());*/
             sessionHelper = SessionHelper.getInstance(application);
-            //sessionHelper.startSession();
+//            sessionHelper.startSession();
             sessionHelper.getConfig();
             /*lifecycle intialisation*/
             ProcessLifecycleOwner.get().getLifecycle().addObserver(sessionHelper);
@@ -40,25 +60,60 @@ public class LogTracker {
             application.registerComponentCallbacks(sessionHelper);
 
             //sessionHelper.getConfig();
-            // SharedPref.getInstance().save(LibConstants.DEV_TOKEN, token);
+            SharedPref.getInstance().save(LibConstants.DEV_TOKEN, token);
 
         } catch (Exception e) {
             Log.e(TAG, "initialize: " + e.getMessage());
         }
-
-
     }
 
-    public static LogTracker getInstance(Application application) {
-        if (logInstance == null)
-            logInstance = new LogTracker(application);
-        return logInstance;
+   /* public static void destroy() {
+        SugarContext.terminate();
+        application.unregisterActivityLifecycleCallbacks(sessionHelper);
+        application.unregisterComponentCallbacks(sessionHelper);
+    }*/
+
+    /**
+     * method will mark a particular view as sensitiveInformation
+     *
+     * @param view
+     */
+    public static void markViewAsSensitiveInformation(View view) {
+        view.setTag(MASK_CODE);
     }
 
-    public static void intialise(String token) {
-        SharedPref.getInstance().save(LibConstants.DEV_TOKEN, token);
+    /**
+     * method will mark a particular view as nonSenstiveInformation
+     *
+     * @param view
+     */
+    public static void unMarkViewAsSensitiveInformation(View view) {
+        view.setTag(UNMASK_CODE);
     }
 
+    /**
+     * method will mark a list of views as senstive information
+     *
+     * @param views
+     */
+    public static void markViewsAsSensitiveInformation(ArrayList<View> views) {
+        for (View view : views) {
+            view.setTag(MASK_CODE);
+        }
+    }
+
+    /**
+     * will mark a list of views as nonSensitiveInformation
+     *
+     * @param views
+     */
+    public static void unMarkViewsAsSensitiveInformation(ArrayList<View> views) {
+
+        for (View view : views) {
+            view.setTag(UNMASK_CODE);
+        }
+
+    }
 
     /**
      * method will track all the exception
